@@ -1,0 +1,471 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #fffdf5;
+    color: #333;
+}
+
+/* Верхняя панель */
+.header {
+    background-color: #e6f3f5;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    background-color: #3a3a3a;
+    color: white;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+}
+
+.logo-text {
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.contacts {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 14px;
+}
+
+.whatsapp {
+    color: #25d366;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.phone {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.location {
+    font-size: 14px;
+}
+
+/* Навигация */
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 10px 0;
+    font-size: 15px;
+    background-color: #bce2e7;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.schedule {
+    font-size: 14px;
+    color: #444;
+}
+
+/* Главный блок */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 100px;
+    background-color: #fffdf5;
+}
+
+.hero-text h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.hero-text h2 {
+    font-size: 22px;
+    color: #5ca4a9;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.btn {
+    background-color: #3a3a3a;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #5a5a5a;
+}
+
+.hero-img .pets-img {
+    width: 400px;
+    height: auto;
+    object-fit: cover;
+}
+/* Базовый сброс */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+    font-family: "Arial", sans-serif;
+    color: #2f2f2f;
+    line-height: 1.35;
+    min-height: 100%;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ---------- ANIMATED PASTEL BACKGROUND ---------- */
+/* фон реализован через два перекрывающихся слоя (::before, ::after),
+   которые плавно переливаются за счёт анимации opacity */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    z-index: -2;
+    pointer-events: none;
+    will-change: opacity;
+    transition: opacity 1s linear;
+    background-size: 200% 200%;
+    filter: blur(18px) saturate(110%);
+}
+
+/* пять вариаций градиента — сдвигаем opacity для плавного перехода */
+body::before {
+    background: linear-gradient(120deg,
+        rgba(255, 235, 230, 0.9) 0%,
+        rgba(255, 250, 220, 0.85) 35%,
+        rgba(220, 245, 255, 0.8) 75%);
+    animation: fadeBefore 12s ease-in-out infinite;
+}
+
+body::after {
+    background: linear-gradient(220deg,
+        rgba(235, 255, 245, 0.9) 0%,
+        rgba(245, 235, 255, 0.9) 40%,
+        rgba(255, 240, 230, 0.85) 100%);
+    animation: fadeAfter 12s ease-in-out infinite;
+}
+
+/* Аннимации: crossfade + небольшое движение градиента */
+@keyframes fadeBefore {
+    0%   { opacity: 1; transform: scale(1) translate3d(0,0,0); background-position: 0% 50%; }
+    25%  { opacity: 0.6; transform: scale(1.02) translate3d(2%, -1%, 0); background-position: 20% 30%; }
+    50%  { opacity: 0.3; transform: scale(1.03) translate3d(-1%, 2%, 0); background-position: 40% 60%; }
+    75%  { opacity: 0.6; transform: scale(1.01) translate3d(1%, -2%, 0); background-position: 60% 40%; }
+    100% { opacity: 1; transform: scale(1) translate3d(0,0,0); background-position: 0% 50%; }
+}
+
+@keyframes fadeAfter {
+    0%   { opacity: 0.3; transform: scale(1.01) translate3d(0,0,0); background-position: 50% 0%; }
+    25%  { opacity: 0.7; transform: scale(1.02) translate3d(-2%, 1%, 0); background-position: 30% 20%; }
+    50%  { opacity: 1; transform: scale(1.04) translate3d(1%, -1%, 0); background-position: 60% 50%; }
+    75%  { opacity: 0.7; transform: scale(1.02) translate3d(-1%, 2%, 0); background-position: 80% 70%; }
+    100% { opacity: 0.3; transform: scale(1.01) translate3d(0,0,0); background-position: 50% 0%; }
+}
+
+/* Чтобы контент выше фона */
+.page { position: relative; z-index: 1; }
+
+/* ---------- Header / Nav ---------- */
+.header { background: transparent; margin-bottom: 6px; }
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 36px;
+    background-color: rgba(60,60,60,0.9);
+    color: #fff;
+}
+
+.logo { display: flex; gap: 12px; align-items: center; }
+.logo-img { display:block; width:48px; height:48px; object-fit:cover; border-radius:50%; background: rgba(255,255,255,0.06); }
+.logo-text { font-weight:700; letter-spacing: 0.6px; }
+
+.contacts { display:flex; gap:18px; align-items:center; font-size:14px; }
+.whatsapp { color:#aee6d8; text-decoration:none; font-weight:600; }
+.phone { color: #fff; text-decoration:none; font-weight:700; }
+.location { color: #f1f1f1; }
+
+/* Nav */
+.nav {
+    display:flex;
+    gap: 26px;
+    justify-content:center;
+    align-items:center;
+    padding: 12px 16px;
+    background-color: rgba(180,230,235,0.55);
+    backdrop-filter: blur(4px);
+    font-weight:600;
+}
+.nav a { color:#2f2f2f; text-decoration:none; }
+.schedule { margin-left: 12px; color:#2b2b2b; font-weight:500; }
+
+/* ---------- Hero ---------- */
+.hero {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 72px 80px;
+    min-height: 420px;
+}
+
+.hero-text { max-width: 56%; }
+.hero-text h1 {
+    font-size: 40px;
+    color: #2b2b2b;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+.hero-text h2 {
+    font-size: 22px;
+    color: #6fb2b6;
+    margin-bottom: 12px;
+}
+.lead { color:#4a4a4a; margin-bottom: 20px; }
+
+.btn {
+    background-color: #3a3a3a;
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 26px;
+    cursor: pointer;
+    font-weight:600;
+    transition: transform .15s ease, background-color .2s ease;
+}
+.btn:hover { transform: translateY(-3px); background-color: #525252; }
+
+.hero-img { width: 430px; height: 360px; display:flex; align-items:center; justify-content:center; }
+.pets-img { width:100%; height:100%; object-fit:cover; display:block; border-radius:10px; box-shadow: 0 6px 26px rgba(30,30,30,0.12); background: rgba(255,255,255,0.5); }
+
+/* Пустой светлый блок под шапкой (как на скриншоте) */
+.placeholder-block {
+    height: 360px;
+    background: rgba(255,245,225,0.85);
+    margin: 12px 0 120px;
+}
+
+/* ---------- Responsive (простая) ---------- */
+@media (max-width: 900px) {
+    .hero { padding: 50px 28px; flex-direction: column-reverse; gap: 28px; align-items: center; }
+    .hero-text { max-width: 100%; text-align: center; }
+    .hero-img { width: 320px; height: 280px; }
+    .nav { gap: 12px; font-size: 14px; padding: 10px; flex-wrap:wrap; }
+    .top-bar { padding: 10px 18px; }
+}
+@media (max-width: 480px) {
+    .logo-text { display:none; }
+    .hero-img { width: 260px; height: 220px; }
+    .hero-text h1 { font-size: 28px; }
+    .placeholder-block { height: 220px; }
+}
+/* Базовый сброс */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+    font-family: "Arial", sans-serif;
+    color: #2f2f2f;
+    line-height: 1.35;
+    min-height: 100%;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ---------- ANIMATED PASTEL BACKGROUND ---------- */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    will-change: opacity;
+    transition: opacity 1s linear;
+    background-size: 200% 200%;
+    filter: blur(18px) saturate(110%);
+}
+
+body::before {
+    background: linear-gradient(120deg,
+        rgba(255, 235, 230, 0.9) 0%,
+        rgba(255, 250, 220, 0.85) 35%,
+        rgba(220, 245, 255, 0.8) 75%);
+    animation: fadeBefore 12s ease-in-out infinite;
+}
+
+body::after {
+    background: linear-gradient(220deg,
+        rgba(235, 255, 245, 0.9) 0%,
+        rgba(245, 235, 255, 0.9) 40%,
+        rgba(255, 240, 230, 0.85) 100%);
+    animation: fadeAfter 12s ease-in-out infinite;
+}
+
+@keyframes fadeBefore {
+    0%   { opacity: 1; background-position: 0% 50%; }
+    50%  { opacity: 0.3; background-position: 50% 100%; }
+    100% { opacity: 1; background-position: 0% 50%; }
+}
+@keyframes fadeAfter {
+    0%   { opacity: 0.3; background-position: 50% 0%; }
+    50%  { opacity: 1; background-position: 0% 50%; }
+    100% { opacity: 0.3; background-position: 50% 0%; }
+}
+
+.page { position: relative; z-index: 1; }
+
+/* ---------- Header / Nav ---------- */
+.header { background: transparent; margin-bottom: 6px; }
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 36px;
+    background-color: rgba(60,60,60,0.9);
+    color: #fff;
+}
+
+.logo { display: flex; gap: 12px; align-items: center; }
+.logo-img { width:48px; height:48px; object-fit:cover; border-radius:50%; background: rgba(255,255,255,0.06); }
+.logo-text { font-weight:700; letter-spacing: 0.6px; }
+
+.contacts { display:flex; gap:18px; align-items:center; font-size:14px; }
+.whatsapp { color:#aee6d8; text-decoration:none; font-weight:600; }
+.phone { color: #fff; text-decoration:none; font-weight:700; }
+.location { color: #f1f1f1; }
+
+.nav {
+    display:flex;
+    gap: 26px;
+    justify-content:center;
+    align-items:center;
+    padding: 12px 16px;
+    background-color: rgba(180,230,235,0.55);
+    backdrop-filter: blur(4px);
+    font-weight:600;
+}
+.nav a { color:#2f2f2f; text-decoration:none; }
+.schedule { margin-left: 12px; color:#2b2b2b; font-weight:500; }
+
+/* ---------- Hero ---------- */
+.hero {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 72px 80px;
+    min-height: 420px;
+}
+
+.hero-text { max-width: 56%; }
+.hero-text h1 {
+    font-size: 40px;
+    color: #2b2b2b;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+.hero-text h2 {
+    font-size: 22px;
+    color: #6fb2b6;
+    margin-bottom: 12px;
+}
+.lead { color:#4a4a4a; margin-bottom: 20px; }
+
+.btn {
+    background-color: #3a3a3a;
+    color: #fff;
+    border: none;
+    padding: 12px 26px;
+    border-radius: 26px;
+    cursor: pointer;
+    font-weight:600;
+    transition: transform .15s ease, background-color .2s ease;
+}
+.btn:hover { transform: translateY(-3px); background-color: #525252; }
+
+/* ---- КАРТИНКА КОТА И СОБАКИ ---- */
+.hero-img {
+    width: 430px;
+    height: 360px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    animation: sway 6s ease-in-out infinite;
+}
+
+/* Плавное покачивание */
+@keyframes sway {
+    0%   { transform: rotate(0deg) translateY(0); }
+    25%  { transform: rotate(1.2deg) translateY(-2px); }
+    50%  { transform: rotate(0deg) translateY(0); }
+    75%  { transform: rotate(-1.2deg) translateY(-2px); }
+    100% { transform: rotate(0deg) translateY(0); }
+}
+
+.pets-img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    border-radius:10px;
+    box-shadow: 0 6px 26px rgba(30,30,30,0.12);
+    background: rgba(255,255,255,0.5);
+}
+
+/* ---- Пустой блок снизу ---- */
+.placeholder-block {
+    height: 360px;
+    background: rgba(255,245,225,0.85);
+    margin: 12px 0 120px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .hero { padding: 50px 28px; flex-direction: column-reverse; gap: 28px; align-items: center; }
+    .hero-text { max-width: 100%; text-align: center; }
+    .hero-img { width: 320px; height: 280px; }
+    .nav { gap: 12px; font-size: 14px; padding: 10px; flex-wrap:wrap; }
+    .top-bar { padding: 10px 18px; }
+}
+@media (max-width: 480px) {
+    .logo-text { display:none; }
+    .hero-img { width: 260px; height: 220px; }
+    .hero-text h1 { font-size: 28px; }
+    .placeholder-block { height: 220px; }
+}
